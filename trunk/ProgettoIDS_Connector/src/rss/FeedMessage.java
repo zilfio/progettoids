@@ -6,8 +6,9 @@ package rss;
 public class FeedMessage {
 
 	String title;
-	String description;
 	String link;
+	String description;
+	String category;
 	String author;
 	String guid;
 	String pubdate;
@@ -15,7 +16,6 @@ public class FeedMessage {
 	public String getTitle() {
 		return title;
 	}
-
 
 	public void setTitle(String title) {
 		this.title = title;
@@ -60,11 +60,20 @@ public class FeedMessage {
 	public void setGuid(String guid) {
 		this.guid = guid;
 	}
+	
+	public String getCategory() {
+		return category;
+	}
+
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
 
 	@Override
 	public String toString() {
 		return "FeedMessage [title=" + title + ", description=" + description
-				+ ", link=" + link + ", author=" + author + ", guid=" + guid
+				+ ", link=" + link + ", category=" + category + ", author=" + author + ", guid=" + guid
 				+ ", pubdate=" + pubdate + "]";
 	}
 

@@ -1,13 +1,24 @@
 package controllo;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
-import manager.Post;
-
+import rss.FeedMessage;
 
 public class ControlloPost {
- public Collection<Post> checkpost (Collection<Post>postA, Collection<Post>postB){
-	
-	 return null;
- }
+	public Collection<FeedMessage> checkpost (Collection<FeedMessage>postA, Collection<FeedMessage>postB){
+		//controllo da 'a' a 'b'
+		Collection<FeedMessage> c = new ArrayList<FeedMessage>();
+		boolean trovato;
+		for(FeedMessage f : postA){
+			trovato = false;
+			for(FeedMessage m : postB){
+				if(!(f.getTitle().equals(m.getTitle())) && !trovato){
+					trovato = true;
+					c.add(f);
+				}
+			}
+		}
+		return c;
+	}
 }

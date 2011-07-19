@@ -1,9 +1,13 @@
 package manager;
 
-import java.util.List;
-import java.util.Scanner;
+import java.util.Collection;
+
+import controllo.ControlloPost;
 
 import lettura.LetturaPost;
+import rss.FeedMessage;
+
+import util.Read;
 
 public class Connector {
 
@@ -39,22 +43,17 @@ public class Connector {
 	}
 	
 	public static void main(String args[]){
-		Scanner in = new Scanner(System.in);
-		System.out.print("inserisci uri bacheca A:");
-		String uriA = in.next();
-		System.out.print("inserisci uri bacheca B:");
-		String uriB = in.next();		
-	    System.out.print("vuopi filtrare i post da inoltrare?[S/N]");
-		String filter = in.next();
-		if(filter.equals("S")){
-			System.out.print("inserisci categoria:");
-			String category =in.next();
-			System.out.print("inserisci autore:");
-			String author =in.next();
-		} else if(filter.equals("N")){
-			System.out.println("non hai impostato nessun filtro!");
-		}else{
-			System.exit(0);
+		System.out.print("Inserisci uri bacheca A: ");
+		String uriA = Read.readString();
+		System.out.print("Inserisci uri bacheca B: ");
+		String uriB = Read.readString();	
+		Collection<FeedMessage> postA = LetturaPost.parsingPost(uriA);
+		Collection<FeedMessage> postB = LetturaPost.parsingPost(uriB);
+		ControlloPost c = new ControlloPost();
+		Collection<FeedMessage> postC = c.checkpost(postA, postB);
+		System.out.println(c);
+		for(FeedMessage m : postC){
+			System.out.println(m);
 		}
 	}
 	
