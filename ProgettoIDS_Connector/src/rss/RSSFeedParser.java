@@ -17,6 +17,7 @@ public class RSSFeedParser {
 	static final String LANGUAGE = "language";
 	static final String COPYRIGHT = "copyright";
 	static final String LINK = "link";
+	static final String CATEGORY = "category";
 	static final String AUTHOR = "author";
 	static final String ITEM = "item";
 	static final String PUB_DATE = "pubDate";
@@ -43,6 +44,7 @@ public class RSSFeedParser {
 			String link = "";
 			String language = "";
 			String copyright = "";
+			String category = "";
 			String author = "";
 			String pubdate = "";
 			String guid = "";
@@ -110,6 +112,11 @@ public class RSSFeedParser {
 						copyright = event.asCharacters().getData();
 						continue;
 					}
+					if (event.asStartElement().getName().getLocalPart() == (CATEGORY)) {
+						event = eventReader.nextEvent();
+						category = event.asCharacters().getData();
+						continue;
+					}
 				} else if (event.isEndElement()) {
 					if (event.asEndElement().getName().getLocalPart() == (ITEM)) {
 						FeedMessage message = new FeedMessage();
@@ -118,6 +125,7 @@ public class RSSFeedParser {
 						message.setGuid(guid);
 						message.setLink(link);
 						message.setTitle(title);
+						message.setCategory(category);
 						message.setPubdate(pubdate);
 						feed.getMessages().add(message);
 						event = eventReader.nextEvent();
