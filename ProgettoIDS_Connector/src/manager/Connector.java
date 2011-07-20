@@ -89,13 +89,15 @@ public class Connector {
 		InoltroPost.PostForward(postC, uriBfeed, uriA, uriB);
 		
 		//Lettura FeedBack dei nuovi Post
-		for(FeedMessage m : postC){
+		/*for(FeedMessage m : postC){
 			if (m != null){
 				FeedMessage feed = new FeedMessage();
 				feed = LetturaFeedback.parsingFeed(m.getGuid());
 				
+				
+				
 			}
-		}
+		}*/
 		
 		
 		//System.out.println(c);
