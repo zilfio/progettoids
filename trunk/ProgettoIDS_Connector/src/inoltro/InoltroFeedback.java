@@ -6,14 +6,12 @@ import manager.Post;
 
 
 public class InoltroFeedback {
- public int findFeedback (Post post){
- 	 return 0;
- }
- public void feedbackForward(int feedbackName,Feedback feedback){
-	 
- }
-	
- 
+	public int findFeedback (Post post){
+		return 0;
+	}
+	public void feedbackForward(int feedbackName,Feedback feedback){
+		
+	}
 }
 	
 
