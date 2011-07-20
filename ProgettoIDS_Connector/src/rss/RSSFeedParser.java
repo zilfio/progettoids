@@ -80,7 +80,6 @@ public class RSSFeedParser {
 						description = event.asCharacters().getData();
 						continue;
 					}
-
 					if (event.asStartElement().getName().getLocalPart() == (LINK)) {
 						event = eventReader.nextEvent();
 						link = event.asCharacters().getData();
