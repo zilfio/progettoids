@@ -53,7 +53,12 @@ public class Connector {
 		Collection<FeedMessage> postC = c.checkpost(postA, postB);
 		System.out.println(c);
 		for(FeedMessage m : postC){
-			System.out.println(m);
+			if(m == null){
+				System.out.println("null");
+			}
+			else{
+				System.out.println(m.getTitle());
+			}
 		}
 	}
 	

@@ -13,10 +13,12 @@ public class ControlloPost {
 		for(FeedMessage f : postA){
 			trovato = false;
 			for(FeedMessage m : postB){
-				if(!(f.getTitle().equals(m.getTitle())) && !trovato){
+				if((f.getTitle().equals(m.getTitle()))){
 					trovato = true;
-					c.add(f);
 				}
+			}
+			if(!trovato){
+				c.add(f);
 			}
 		}
 		return c;
