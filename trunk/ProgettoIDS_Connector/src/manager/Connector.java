@@ -1,9 +1,14 @@
 package manager;
 
+import inoltro.InoltroFeedback;
 import inoltro.InoltroPost;
 
-import java.util.ArrayList;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Collection;
+import java.util.Properties;
 
 import controllo.ControlloPost;
 
@@ -11,93 +16,72 @@ import lettura.LetturaFeedback;
 import lettura.LetturaPost;
 import rss.FeedMessage;
 
-import util.Read;
-
 public class Connector {
-
-	private String uriA;
-	private String uriB;
-	private String uriAfeed;
-	private String uriBfeed;
-	private String filter;
-	
-	
-	
-	public Connector(String uriA, String uriB, String uriAfeed, String uriBfeed, String filter) {
-	
-		this.uriA = uriA;
-		this.uriB = uriB;
-		this.uriAfeed = uriAfeed;
-		this.uriBfeed = uriBfeed;
-		this.filter = filter;
-	}
-	public String getUriA() {
-		return uriA;
-	}
-	public void setUriA(String uriA) {
-		this.uriA = uriA;
-	}
-	public String getUriB() {
-		return uriB;
-	}
-	
-	public String getUriAfeed() {
-		return uriAfeed;
-	}
-	
-	public String getUriBfeed() {
-		return uriBfeed;
-	}
-	public void setUriBfeed(String uriBfeed) {
-		this.uriBfeed = uriBfeed;
-	}
-	
-	public void setUriAfeed(String uriAfeed) {
-		this.uriAfeed = uriAfeed;
-	}
-	public void setUriB(String uriB) {
-		this.uriB = uriB;
-	}
-	public String getFilter() {
-		return filter;
-	}
-	public void setFilter(String filter) {
-		this.filter = filter;
-	}
-	
 	public static void main(String args[]){
 		
 		//Configurazione
-		System.out.print("Inserisci l'uri dei Post bacheca A: ");
-		String uriA = Read.readString();
-		System.out.print("Inserisci l'uri dei Feedback bacheca A: ");
-		String uriAfeed = Read.readString();
-		System.out.print("Inserisci l'uri dei Post bacheca B: ");
-		String uriB = Read.readString();	
-		System.out.print("Inserisci l'uri dei Feedback bacheca B: ");
-		String uriBfeed = Read.readString();
+		/* Creiamo l'oggetto istanza della classe properties */
+		Properties p  = new Properties();
+		
+		/* Creiamo un oggetto File a cui passiamo come parametro */
+		/* il path del file di properties */
+		File f = new File("./config.properties");
+		
+		/* Carichiamo lo stream nell'oggetto properties */
+		try {
+			p.load(new FileInputStream(f));
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		/* Recuperiamo il valore della proprietà */
+		String URI_A_POST = p.getProperty("uri_post_bacheca_a");
+		String URI_A_POST_READ = p.getProperty("uri_post_bacheca_a"+"action_readpost");
+		String URI_A_POST_NEW = p.getProperty("uri_post_bacheca_a"+"action_newpost");
+		String URI_A_FEED = p.getProperty("uri_feedback_bacheca_a");
+		String URI_A_FEED_READ = p.getProperty("uri_feedback_bacheca_a"+"action_readfeed");
+		String URI_A_FEED_NEW = p.getProperty("uri_feedback_bacheca_a"+"action_newfeed");
+		String URI_B_POST = p.getProperty("uri_post_bacheca_b");
+		String URI_B_POST_READ = p.getProperty("uri_post_bacheca_b"+"action_readpost");
+		String URI_B_POST_NEW = p.getProperty("uri_post_bacheca_b"+"action_newpost");
+		String URI_B_FEED = p.getProperty("uri_feedback_bacheca_b");
+		String URI_B_FEED_READ = p.getProperty("uri_feedback_bacheca_b"+"action_readfeed");
+		String URI_B_FEED_NEW = p.getProperty("uri_feedback_bacheca_b"+"action_newfeed");
+		
+		//System.out.print("Inserisci l'uri dei Post bacheca A: ");
+		//String uriApost = Read.readString();
+		//System.out.print("Inserisci l'uri dei Feedback bacheca A: ");
+		//String uriAfeed = Read.readString();
+		//System.out.print("Inserisci l'uri dei Post bacheca B: ");
+		//String uriBpost = Read.readString();	
+		//System.out.print("Inserisci l'uri dei Feedback bacheca B: ");
+		//String uriBfeed = Read.readString();
 		
 		//Lettura Post di entrambe le bacheche
-		Collection<FeedMessage> postA = LetturaPost.parsingPost(uriA);
-		Collection<FeedMessage> postB = LetturaPost.parsingPost(uriB);
+		Collection<FeedMessage> postA = LetturaPost.parsingPost(URI_A_POST_READ);
+		Collection<FeedMessage> postB = LetturaPost.parsingPost(URI_B_POST_READ);
 		
 		//Controllo delle bacheche
 		ControlloPost c = new ControlloPost();
 		Collection<FeedMessage> postC = c.checkpost(postA, postB);
 		
 		//Inoltro nuovi Post
-		InoltroPost.PostForward(postC, uriBfeed, uriA, uriB);
+		InoltroPost.PostForward(postC, URI_B_FEED, URI_A_POST_NEW, URI_B_POST_NEW);
 		
 		//Lettura FeedBack dei nuovi Post
-		/*for(FeedMessage m : postC){
+		for(FeedMessage m : postC){
 			if (m != null){
 				FeedMessage feed = new FeedMessage();
 				feed = LetturaFeedback.parsingFeed(m.getGuid());
 				
-				
-				
+				String guid = InoltroFeedback.findFeedback(m, URI_A_FEED, URI_A_POST_READ, URI_B_POST_READ);
+				InoltroFeedback.feedbackForward(feed, guid);
 			}
-		}*/
+		}
 		
 		
 		//System.out.println(c);

@@ -17,7 +17,7 @@ public class MediaFeedback {
 	public static String calcola_media(Collection<FeedMessage>feedback){
 		int feedcount = 0;
 		int feedsum = 0;
-		String average = "";
+		String average = new String();
 		
 		for(FeedMessage f : feedback){
 			if (f != null){
@@ -59,11 +59,5 @@ public class MediaFeedback {
 			average = "AGREE";
 		}
 		return average;
-	    }
-
-
-
-	
-	
+	    }	
 }
-
