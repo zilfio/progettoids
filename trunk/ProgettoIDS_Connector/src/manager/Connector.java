@@ -70,7 +70,7 @@ public class Connector {
 		Collection<FeedMessage> postC = c.checkpost(postA, postB);
 		
 		//Inoltro nuovi Post
-		InoltroPost.PostForward(postC, URI_B_FEED, URI_A_POST_NEW, URI_B_POST_NEW);
+		InoltroPost.PostForward(postC, URI_A_FEED, URI_B_FEED, URI_A_POST_NEW, URI_B_POST_NEW);
 		
 		//Lettura FeedBack dei nuovi Post
 		for(FeedMessage m : postC){
@@ -78,7 +78,7 @@ public class Connector {
 				FeedMessage feed = new FeedMessage();
 				feed = LetturaFeedback.parsingFeed(m.getGuid());
 				
-				String guid = InoltroFeedback.findFeedback(m, URI_A_FEED, URI_A_POST_READ, URI_B_POST_READ);
+				String guid = InoltroFeedback.findFeedback(m, URI_A_FEED, URI_B_FEED, URI_A_POST_READ, URI_B_POST_READ);
 				InoltroFeedback.feedbackForward(feed, guid);
 			}
 		}

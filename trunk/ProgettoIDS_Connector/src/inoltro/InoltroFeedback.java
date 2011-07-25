@@ -1,7 +1,10 @@
 package inoltro;
 
+import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URL;
+import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -12,7 +15,7 @@ import manager.Post;
 
 
 public class InoltroFeedback {
-	public static String findFeedback (FeedMessage post, String urifeedA, String uriA, String uriB){
+	public static String findFeedback (FeedMessage post, String urifeedA, String urifeedB, String uriA, String uriB){
 		
 		String guid = post.getGuid();
 		int uriAfeedlength = urifeedA.length();
@@ -43,7 +46,19 @@ public class InoltroFeedback {
 		String uri = (guid + "&author=" + feedback.getAuthor() + "&title=" + feedback.getTitle() + "&description=" + feedback.getDescription());
 		uri = uri.replaceAll(" ", "%20");
 		
-		//invio url
+		URL url = null;
+		try {
+			url = new URL(uri);
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		 try {
+			URLConnection yc = url.openConnection();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
 	
