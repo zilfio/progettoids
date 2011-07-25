@@ -65,6 +65,7 @@ public class InoltroPost {
 				}
 				 try {
 					URLConnection yc = url.openConnection();
+					yc.connect();
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

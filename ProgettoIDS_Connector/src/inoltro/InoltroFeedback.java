@@ -55,6 +55,7 @@ public class InoltroFeedback {
 		}
 		 try {
 			URLConnection yc = url.openConnection();
+			yc.connect();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
