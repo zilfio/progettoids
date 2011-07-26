@@ -40,17 +40,17 @@ public class Connector {
 		
 		/* Recuperiamo il valore della proprietà */
 		String URI_A_POST = p.getProperty("uri_post_bacheca_a");
-		String URI_A_POST_READ = p.getProperty("uri_post_bacheca_a"+"action_readpost");
-		String URI_A_POST_NEW = p.getProperty("uri_post_bacheca_a"+"action_newpost");
+		String URI_A_POST_READ = p.getProperty("uri_post_bacheca_a") +  p.getProperty("action_readpost");
+		String URI_A_POST_NEW = p.getProperty("uri_post_bacheca_a") +  p.getProperty("action_newpost");
 		String URI_A_FEED = p.getProperty("uri_feedback_bacheca_a");
-		String URI_A_FEED_READ = p.getProperty("uri_feedback_bacheca_a"+"action_readfeed");
-		String URI_A_FEED_NEW = p.getProperty("uri_feedback_bacheca_a"+"action_newfeed");
+		String URI_A_FEED_READ = p.getProperty("uri_feedback_bacheca_a") +  p.getProperty("action_readfeed");
+		String URI_A_FEED_NEW = p.getProperty("uri_feedback_bacheca_a") +  p.getProperty("action_newfeed");
 		String URI_B_POST = p.getProperty("uri_post_bacheca_b");
-		String URI_B_POST_READ = p.getProperty("uri_post_bacheca_b"+"action_readpost");
-		String URI_B_POST_NEW = p.getProperty("uri_post_bacheca_b"+"action_newpost");
+		String URI_B_POST_READ = p.getProperty("uri_post_bacheca_b") +  p.getProperty("action_readpost");
+		String URI_B_POST_NEW = p.getProperty("uri_post_bacheca_b") +  p.getProperty("action_newpost");
 		String URI_B_FEED = p.getProperty("uri_feedback_bacheca_b");
-		String URI_B_FEED_READ = p.getProperty("uri_feedback_bacheca_b"+"action_readfeed");
-		String URI_B_FEED_NEW = p.getProperty("uri_feedback_bacheca_b"+"action_newfeed");
+		String URI_B_FEED_READ = p.getProperty("uri_feedback_bacheca_b") +  p.getProperty("action_readfeed");
+		String URI_B_FEED_NEW = p.getProperty("uri_feedback_bacheca_b") +  p.getProperty("action_newfeed");
 		
 		//System.out.print("Inserisci l'uri dei Post bacheca A: ");
 		//String uriApost = Read.readString();
@@ -65,6 +65,7 @@ public class Connector {
 		Collection<FeedMessage> postA = LetturaPost.parsingPost(URI_A_POST_READ);
 		Collection<FeedMessage> postB = LetturaPost.parsingPost(URI_B_POST_READ);
 		
+		
 		//Controllo delle bacheche
 		ControlloPost c = new ControlloPost();
 		Collection<FeedMessage> postC = c.checkpost(postA, postB);
@@ -76,7 +77,9 @@ public class Connector {
 		for(FeedMessage m : postC){
 			if (m != null){
 				FeedMessage feed = new FeedMessage();
-				feed = LetturaFeedback.parsingFeed(m.getGuid());
+				String guid2 = m.getGuid();
+				System.out.println (guid2);
+				feed = LetturaFeedback.parsingFeed(guid2);
 				
 				String guid = InoltroFeedback.findFeedback(m, URI_A_FEED, URI_B_FEED, URI_A_POST_READ, URI_B_POST_READ);
 				InoltroFeedback.feedbackForward(feed, guid);
