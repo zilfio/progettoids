@@ -36,10 +36,8 @@ public class InoltroPost {
 					e1.printStackTrace();
 				 }
 				 try {
-					HttpURLConnection uc = (HttpURLConnection)url.openConnection();
-					 uc.setDoOutput(true);
-					 PrintWriter out = new PrintWriter (uc.getOutputStream());
-					 out.println(uri);
+					URLConnection yc = url.openConnection();
+					yc.connect();
 				 } catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
