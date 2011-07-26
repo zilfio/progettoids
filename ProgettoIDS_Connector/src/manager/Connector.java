@@ -74,6 +74,7 @@ public class Connector {
 		InoltroPost.PostForward(postC, URI_A_FEED, URI_B_FEED, URI_A_POST_NEW, URI_B_POST_NEW);
 		
 		//Lettura FeedBack dei nuovi Post
+		
 		for(FeedMessage m : postC){
 			if (m != null){
 				FeedMessage feed = new FeedMessage();
