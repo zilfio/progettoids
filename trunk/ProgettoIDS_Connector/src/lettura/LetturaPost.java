@@ -21,7 +21,6 @@ public class LetturaPost {
 		 Collection<FeedMessage> post = new ArrayList<FeedMessage>();
 		 for (FeedMessage message : feed.getMessages()) {
 			 post.add(message);
-
 		 }
 		 return post;
 	 }
