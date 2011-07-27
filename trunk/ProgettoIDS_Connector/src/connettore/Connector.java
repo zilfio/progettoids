@@ -19,7 +19,7 @@ import rss.FeedMessage;
 public class Connector {
 	public static void main(String args[]){
 		
-		//Configurazione
+		//Carichiamo la Configurazione
 		/* Creiamo l'oggetto istanza della classe properties */
 		Properties p  = new Properties();
 		
