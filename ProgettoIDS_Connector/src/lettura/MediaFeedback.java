@@ -4,7 +4,6 @@ import java.util.Collection;
 
 import rss.FeedMessage;
 
-import manager.Feedback;
 
 
 public class MediaFeedback {
