@@ -67,8 +67,8 @@ public class Connector {
 		Collection<FeedMessage> postA = LetturaPost.parsingPost(URI_A_POST_READ);
 		Collection<FeedMessage> postB = LetturaPost.parsingPost(URI_B_POST_READ);
 		
-		System.out.println(postA);
-		System.out.println(postB);
+		System.out.println("Post bacheca A: "+postA);
+		System.out.println("POst bacheca B: "+postB);
 		
 		System.out.println("Lettura post fine!");
 		
@@ -89,11 +89,14 @@ public class Connector {
 			if (m != null){
 				FeedMessage feed = new FeedMessage();
 				String guid2 = m.getGuid();
-				System.out.println (guid2);
+				guid2 = guid2.replace("?", "?action=READ&");
+				System.out.println("Guid2: "+guid2);
 				feed = LetturaFeedback.parsingFeed(guid2);
-				
+				System.out.println("Feed: "+feed);
 				if(feed!=null){
+					System.out.println("diverso da null");
 					String guid = InoltroFeedback.findFeedback(m, URI_A_FEED, URI_B_FEED, URI_A_POST_READ, URI_B_POST_READ);
+					System.out.println("Guid: "+guid);
 					InoltroFeedback.feedbackForward(feed, guid);
 				}
 			}

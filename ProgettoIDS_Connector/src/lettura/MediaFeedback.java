@@ -18,26 +18,26 @@ public class MediaFeedback {
 		int feedcount = 0;
 		int feedsum = 0;
 		String average = new String();
-		
+		System.out.println("sto qui");
 		for(FeedMessage f : feedback){
 			if (f != null){
-				if (f.getTitle() == "AGREE"){
-					feedcount ++;
+				if (f.getTitle().equals("AGREE")){
+					feedcount++;
 					feedsum += 4;
 				}
 				
-				else if(f.getTitle() == "DISAGREE"){
-					feedcount ++;
+				else if(f.getTitle().equals("DISAGREE")){
+					feedcount++;
 					feedsum -= 4;
 				}
 				
-				else if(f.getTitle() == "PARTIALLY AGREE"){
-					feedcount ++;
+				else if(f.getTitle().equals("PARTIALLY AGREE")){
+					feedcount++;
 					feedsum += 2;
 				}
 				
-				else if(f.getTitle() == "DECTRACTOR"){
-					feedcount ++;
+				else if(f.getTitle().equals("DECTRACTOR")){
+					feedcount++;
 					feedsum -= 8;
 				}
 			}
@@ -45,6 +45,7 @@ public class MediaFeedback {
 		}
 		
 		feedsum = (int)(feedsum/feedcount);
+		System.out.println("Feedsum: "+feedsum);
 		
 		if (feedsum < -4){
 			average = "DETRACTOR";
@@ -58,6 +59,7 @@ public class MediaFeedback {
 		else if (feedsum >= 4){
 			average = "AGREE";
 		}
+		System.out.println("Average: "+average);
 		return average;
-	    }	
+    }	
 }

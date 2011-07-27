@@ -17,6 +17,7 @@ public class InoltroFeedback {
 	public static String findFeedback (FeedMessage post, String urifeedA, String urifeedB, String uriA, String uriB){
 		
 		String guid = post.getGuid();
+		
 		int uriAfeedlength = urifeedA.length();
 		if(urifeedA==(guid.substring(0, uriAfeedlength))){
 			Collection<FeedMessage> postB = new ArrayList<FeedMessage>();
@@ -42,6 +43,8 @@ public class InoltroFeedback {
 	}
 	
 	public static void feedbackForward(FeedMessage feedback,String guid){
+		guid = guid.replace("?", "?action=NEWCOMMENT&");
+		System.out.println("guid: "+guid);
 		String uri = (guid + "&author=" + feedback.getAuthor() + "&title=" + feedback.getTitle() + "&description=" + feedback.getDescription());
 		uri = uri.replaceAll(" ", "%20");
 		
