@@ -61,14 +61,24 @@ public class Connector {
 		//System.out.print("Inserisci l'uri dei Feedback bacheca B: ");
 		//String uriBfeed = Read.readString();
 		
+		System.out.println("Eseguo lettura post!");
+		
 		//Lettura Post di entrambe le bacheche
 		Collection<FeedMessage> postA = LetturaPost.parsingPost(URI_A_POST_READ);
 		Collection<FeedMessage> postB = LetturaPost.parsingPost(URI_B_POST_READ);
 		
+		System.out.println(postA);
+		System.out.println(postB);
+		
+		System.out.println("Lettura post fine!");
+		
+		if(postA == null && postB == null){
+			System.exit(0);
+		}
+		
 		
 		//Controllo delle bacheche
-		ControlloPost c = new ControlloPost();
-		Collection<FeedMessage> postC = c.checkpost(postA, postB);
+		Collection<FeedMessage> postC = ControlloPost.checkpost(postA, postB);
 		
 		//Inoltro nuovi Post
 		InoltroPost.PostForward(postC, URI_A_FEED, URI_B_FEED, URI_A_POST_NEW, URI_B_POST_NEW);
@@ -82,23 +92,11 @@ public class Connector {
 				System.out.println (guid2);
 				feed = LetturaFeedback.parsingFeed(guid2);
 				
-				String guid = InoltroFeedback.findFeedback(m, URI_A_FEED, URI_B_FEED, URI_A_POST_READ, URI_B_POST_READ);
-				InoltroFeedback.feedbackForward(feed, guid);
-			}
-		}
-		
-		
-		//System.out.println(c);
-		for(FeedMessage m : postC){
-			if(m == null){
-				System.out.println("null");
-			}
-			else{
-				System.out.println(m.getTitle());
+				if(feed!=null){
+					String guid = InoltroFeedback.findFeedback(m, URI_A_FEED, URI_B_FEED, URI_A_POST_READ, URI_B_POST_READ);
+					InoltroFeedback.feedbackForward(feed, guid);
+				}
 			}
 		}
 	}
-
-
-	
 }
