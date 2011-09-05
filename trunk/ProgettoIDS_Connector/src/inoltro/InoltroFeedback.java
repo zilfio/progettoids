@@ -18,23 +18,29 @@ public class InoltroFeedback {
 		
 		String guid = post.getGuid();
 		
+		
+		//Controllo presenza post originale in Bacheca A o B
 		int uriAfeedlength = urifeedA.length();
 		if(urifeedA==(guid.substring(0, uriAfeedlength))){
+			System.out.println ("Originale in A");
 			Collection<FeedMessage> postB = new ArrayList<FeedMessage>();
 			postB = LetturaPost.parsingPost(uriB);
 			
 			for(FeedMessage message:postB){
 				if(post.getTitle() == message.getTitle() && post.getDescription() == message.getDescription()){
+					System.out.println ("Guid post duplicato: " + message.getGuid());
 					return message.getGuid();
 				}
 			}
 		}
 		else if(urifeedA!=(guid.substring(0, uriAfeedlength))){
+			System.out.println ("Originale in B");
 			Collection<FeedMessage> postA = new ArrayList<FeedMessage>();
 			postA = LetturaPost.parsingPost(uriA);
 			
 			for(FeedMessage message:postA){
 				if(post.getTitle() == message.getTitle() && post.getDescription() == message.getDescription()){
+					System.out.println ("Guid post duplicato: " + message.getGuid());
 					return message.getGuid();
 				}
 			}
