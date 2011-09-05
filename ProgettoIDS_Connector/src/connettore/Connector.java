@@ -66,8 +66,9 @@ public class Connector {
 		
 		//Lettura Post di entrambe le bacheche
 		Collection<FeedMessage> postA = LetturaPost.parsingPost(URI_A_POST_READ);
+		System.out.println("URI_A_POST_READ: "+URI_A_POST_READ);
 		Collection<FeedMessage> postB = LetturaPost.parsingPost(URI_B_POST_READ);
-		
+		System.out.println("URI_B_POST_READ: "+URI_B_POST_READ);
 		System.out.println("Post bacheca A: "+postA);
 		System.out.println("POst bacheca B: "+postB);
 		
