@@ -47,7 +47,6 @@ public class Connector {
 		String URI_A_FEED_NEW = p.getProperty("uri_feedback_bacheca_a") +  p.getProperty("action_newfeed");
 		String URI_B_POST = p.getProperty("uri_post_bacheca_b");
 		String URI_B_POST_READ = p.getProperty("uri_post_bacheca_b") +  p.getProperty("action_readpost");
-		System.out.println (URI_B_POST_READ);
 		String URI_B_POST_NEW = p.getProperty("uri_post_bacheca_b") +  p.getProperty("action_newpost");
 		String URI_B_FEED = p.getProperty("uri_feedback_bacheca_b");
 		String URI_B_FEED_READ = p.getProperty("uri_feedback_bacheca_b") +  p.getProperty("action_readfeed");
@@ -66,11 +65,7 @@ public class Connector {
 		
 		//Lettura Post di entrambe le bacheche
 		Collection<FeedMessage> postA = LetturaPost.parsingPost(URI_A_POST_READ);
-		System.out.println("URI_A_POST_READ: "+URI_A_POST_READ);
 		Collection<FeedMessage> postB = LetturaPost.parsingPost(URI_B_POST_READ);
-		System.out.println("URI_B_POST_READ: "+URI_B_POST_READ);
-		System.out.println("Post bacheca A: "+postA);
-		System.out.println("POst bacheca B: "+postB);
 		
 		System.out.println("Lettura post fine!");
 		

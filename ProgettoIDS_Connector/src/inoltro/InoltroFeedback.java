@@ -17,11 +17,14 @@ public class InoltroFeedback {
 	public static String findFeedback (FeedMessage post, String urifeedA, String urifeedB, String uriA, String uriB){
 		
 		String guid = post.getGuid();
+		System.out.println (post.getGuid() );
+		System.out.println (urifeedA );
 		
 		
 		//Controllo presenza post originale in Bacheca A o B
 		int uriAfeedlength = urifeedA.length();
-		if(urifeedA==(guid.substring(0, uriAfeedlength))){
+
+		if(urifeedA.equals(guid.substring(0, uriAfeedlength))){
 			System.out.println ("Originale in A");
 			Collection<FeedMessage> postB = new ArrayList<FeedMessage>();
 			postB = LetturaPost.parsingPost(uriB);
@@ -33,7 +36,7 @@ public class InoltroFeedback {
 				}
 			}
 		}
-		else if(urifeedA!=(guid.substring(0, uriAfeedlength))){
+		else if( !(urifeedA.equals(guid.substring(0, uriAfeedlength - 1))) ){
 			System.out.println ("Originale in B");
 			Collection<FeedMessage> postA = new ArrayList<FeedMessage>();
 			postA = LetturaPost.parsingPost(uriA);
