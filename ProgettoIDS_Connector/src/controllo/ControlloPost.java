@@ -17,12 +17,12 @@ public class ControlloPost {
 				trovato = false;
 				if(postB!=null){
 					for(FeedMessage m : postB){
-						if((f.getTitle().equals(m.getTitle()))){
+						if(( (f.getTitle().equals(m.getTitle()) && (f.getDescription().equals(m.getDescription()))) )){
 							trovato = true;
 						}
 					}
 				}
-				if(!trovato){
+				if(trovato == false){
 					c.add(f);
 				}
 			}
@@ -35,12 +35,12 @@ public class ControlloPost {
 				trovato = false;
 				if(postA!=null){
 					for(FeedMessage m : postA){
-						if((f.getTitle().equals(m.getTitle()))){
+						if(( (f.getTitle().equals(m.getTitle()) && (f.getDescription().equals(m.getDescription()))) )){
 							trovato = true;
 						}
 					}
 				}
-				if(!trovato){
+				if(trovato == false){
 					c.add(f);
 				}
 			}
