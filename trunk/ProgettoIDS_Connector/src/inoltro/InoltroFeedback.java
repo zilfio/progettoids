@@ -25,24 +25,23 @@ public class InoltroFeedback {
 		int uriAfeedlength = urifeedA.length();
 
 		if(urifeedA.equals(guid.substring(0, uriAfeedlength))){
-			System.out.println ("Originale in A");
-			Collection<FeedMessage> postB = new ArrayList<FeedMessage>();
-			postB = LetturaPost.parsingPost(uriB);
+			System.out.println (uriB);
+			Collection<FeedMessage> postB = LetturaPost.parsingPost(uriB);
+			System.out.println (postB);
 			
 			for(FeedMessage message:postB){
-				if(post.getTitle() == message.getTitle() && post.getDescription() == message.getDescription()){
+				if(post.getTitle().equals(message.getTitle()) && post.getDescription().equals(message.getDescription()) ){
 					System.out.println ("Guid post duplicato: " + message.getGuid());
 					return message.getGuid();
 				}
 			}
 		}
 		else if( !(urifeedA.equals(guid.substring(0, uriAfeedlength - 1))) ){
-			System.out.println ("Originale in B");
 			Collection<FeedMessage> postA = new ArrayList<FeedMessage>();
 			postA = LetturaPost.parsingPost(uriA);
 			
 			for(FeedMessage message:postA){
-				if(post.getTitle() == message.getTitle() && post.getDescription() == message.getDescription()){
+				if(post.getTitle().equals(message.getTitle()) && post.getDescription().equals(message.getDescription()) ){
 					System.out.println ("Guid post duplicato: " + message.getGuid());
 					return message.getGuid();
 				}
