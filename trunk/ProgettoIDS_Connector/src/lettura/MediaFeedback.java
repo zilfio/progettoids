@@ -30,7 +30,7 @@ public class MediaFeedback {
 					feedsum -= 4;
 				}
 				
-				else if(f.getTitle().equals("PARTIALLY AGREE")){
+				else if(f.getTitle().equals("PARTIALLY_AGREE")){
 					feedcount++;
 					feedsum += 2;
 				}
@@ -53,7 +53,7 @@ public class MediaFeedback {
 			average = "DISAGREE";
 		}
 		else if (feedsum >= 0 && feedsum < 4){
-			average = "PARTIALLY AGREE";
+			average = "PARTIALLY_AGREE";
 		}
 		else if (feedsum >= 4){
 			average = "AGREE";
