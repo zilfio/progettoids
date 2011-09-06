@@ -51,6 +51,7 @@ public class Connector {
 		String URI_B_FEED = p.getProperty("uri_feedback_bacheca_b");
 		String URI_B_FEED_READ = p.getProperty("uri_feedback_bacheca_b") +  p.getProperty("action_readfeed");
 		String URI_B_FEED_NEW = p.getProperty("uri_feedback_bacheca_b") +  p.getProperty("action_newfeed");
+		String FILTRO = p.getProperty("filtro");
 		
 		//System.out.print("Inserisci l'uri dei Post bacheca A: ");
 		//String uriApost = Read.readString();
@@ -75,7 +76,7 @@ public class Connector {
 		
 		
 		//Controllo delle bacheche
-		Collection<FeedMessage> postC = ControlloPost.checkpost(postA, postB);
+		Collection<FeedMessage> postC = ControlloPost.checkpost(postA, postB, FILTRO);
 		
 		//Inoltro nuovi Post
 		InoltroPost.PostForward(postC, URI_A_FEED, URI_B_FEED, URI_A_POST_NEW, URI_B_POST_NEW);
