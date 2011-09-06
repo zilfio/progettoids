@@ -3,8 +3,6 @@ package lettura;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import javax.xml.stream.XMLStreamException;
-
 import rss.Feed;
 import rss.FeedMessage;
 import rss.RSSFeedParser;

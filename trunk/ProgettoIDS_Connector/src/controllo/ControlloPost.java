@@ -6,7 +6,7 @@ import java.util.Collection;
 import rss.FeedMessage;
 
 public class ControlloPost {
-	public static Collection<FeedMessage> checkpost (Collection<FeedMessage>postA, Collection<FeedMessage>postB){
+	public static Collection<FeedMessage> checkpost (Collection<FeedMessage>postA, Collection<FeedMessage>postB, String filtro){
 		
 		Collection<FeedMessage> c = new ArrayList<FeedMessage>();
 		boolean trovato;
