@@ -113,7 +113,8 @@ public class RSSFeedParser {
 					}
 					if (event.asStartElement().getName().getLocalPart() == (CATEGORY)) {
 						event = eventReader.nextEvent();
-						category = event.asCharacters().getData();
+						// Gestione personalizzata di più category
+						category = category + event.asCharacters().getData() + ",";
 						continue;
 					}
 				} else if (event.isEndElement()) {
