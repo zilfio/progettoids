@@ -23,8 +23,15 @@ public class InoltroPost {
 				 //Sostituire il S.o.P con l'invio dell'uri
 				 System.out.println ("Fa parte della bacheca B");
 				 String uri = uriA + "&title=" + message.getTitle() + "&description="
-				 + message.getDescription() + "&link=" + message.getLink() + "&category=" + message.getCategory()
-				 + "&author=" + message.getAuthor() + "&pubDate=" + message.getPubdate();
+				 + message.getDescription() + "&link=" + message.getLink() + "&pubDate=" + message.getPubdate();
+				 
+				 //Controllo Bug Category
+				 if ( !(message.getCategory().isEmpty()) )
+					 uri = uri + "&category=" + message.getCategory();
+				 if ( !(message.getAuthor().isEmpty()) )
+					 uri = uri + "&author=" + message.getAuthor();
+				 
+				 
 				 uri = uri.replaceAll(" ", "%20");
 				 
 				 System.out.println(uri);
@@ -38,7 +45,7 @@ public class InoltroPost {
 				 try {
 					URLConnection yc = url.openConnection();
 					BufferedReader in = new BufferedReader(new InputStreamReader(yc.getInputStream())); 
-			        String inputLine; 
+			        String inputLine;
 			        while ((inputLine = in.readLine()) != null)  
 			            System.out.println(inputLine); 
 			        in.close();
@@ -52,8 +59,15 @@ public class InoltroPost {
 				 //Sostituire il S.o.P con l'invio dell'uri
 				 System.out.println ("Fa parte della bacheca A");
 				 String uri = uriB + "&title=" + message.getTitle() + "&description="
-				 + message.getDescription() + "&link=" + message.getLink() + "&category=" + message.getCategory()
-				 + "&author=" + message.getAuthor() + "&pubDate=" + message.getPubdate();
+				 + message.getDescription() + "&link=" + message.getLink() + "&pubDate=" + message.getPubdate();
+				 
+				 //Controllo Bug Category
+				 if ( !(message.getCategory().isEmpty()) )
+					 uri = uri + "&category=" + message.getCategory();
+				 if ( !(message.getAuthor().isEmpty()) )
+					 uri = uri + "&author=" + message.getAuthor();
+				 
+				 
 				 uri = uri.replaceAll(" ", "%20");
 
 				 System.out.println(uri);
