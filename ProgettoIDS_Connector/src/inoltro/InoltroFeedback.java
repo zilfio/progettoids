@@ -54,8 +54,8 @@ public class InoltroFeedback {
 		guid = guid.replace("?", "?action=NEWCOMMENT&");
 		System.out.println("guid: "+guid);
 		String uri = (guid + "&author=" + feedback.getAuthor() + "&title=" + feedback.getTitle() + "&description=" + feedback.getDescription());
-		System.out.println("URI: "+uri);
 		uri = uri.replaceAll(" ", "%20");
+		System.out.println("URI: "+uri);
 		
 		URL url = null;
 		try {
