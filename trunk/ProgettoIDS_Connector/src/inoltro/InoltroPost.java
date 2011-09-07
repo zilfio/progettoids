@@ -1,14 +1,9 @@
 package inoltro;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
 import java.util.Collection;
 
 import rss.FeedMessage;
+import util.Registrazione;
 
 
 public class InoltroPost {
@@ -35,24 +30,7 @@ public class InoltroPost {
 				 uri = uri.replaceAll(" ", "%20");
 				 
 				 System.out.println(uri);
-				 URL url = null;
-				 try {
-					url = new URL(uri);
-				 } catch (MalformedURLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				 }
-				 try {
-					URLConnection yc = url.openConnection();
-					BufferedReader in = new BufferedReader(new InputStreamReader(yc.getInputStream())); 
-			        String inputLine;
-			        while ((inputLine = in.readLine()) != null)  
-			            System.out.println(inputLine); 
-			        in.close();
-				 } catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				 }		 
+				 Registrazione.inviourl(uri);
 			 }
 			 
 			 else if((uriALength < guid.length()) && (uriAfeed.equals(guid.substring(0, uriALength)))) {
@@ -71,25 +49,7 @@ public class InoltroPost {
 				 uri = uri.replaceAll(" ", "%20");
 
 				 System.out.println(uri);
-				 
-				 URL url = null;
-				try {
-					url = new URL(uri);
-				} catch (MalformedURLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				 try {
-					URLConnection yc = url.openConnection();
-					BufferedReader in = new BufferedReader(new InputStreamReader(yc.getInputStream())); 
-			        String inputLine; 
-			        while ((inputLine = in.readLine()) != null)  
-			            System.out.println(inputLine);
-			        in.close();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				 Registrazione.inviourl(uri);
 			 }
 
 		 }
