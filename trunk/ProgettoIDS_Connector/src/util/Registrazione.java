@@ -21,7 +21,7 @@ public class Registrazione {
 			BufferedReader in = new BufferedReader(new InputStreamReader(yc.getInputStream())); 
 	        String inputLine;
 	        while ((inputLine = in.readLine()) != null)  
-	            System.out.println(inputLine); 
+	            System.out.println("InputLine: "+inputLine); 
 	        in.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
