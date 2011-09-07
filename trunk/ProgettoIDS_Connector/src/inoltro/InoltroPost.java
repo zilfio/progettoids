@@ -8,7 +8,7 @@ import util.Registrazione;
 
 public class InoltroPost {
 
-	public static void PostForward(Collection<FeedMessage>post, String uriAfeed, String uriBfeed, String uriA, String uriB){
+	public static boolean PostForward(Collection<FeedMessage>post, String uriAfeed, String uriBfeed, String uriA, String uriB){
 		
 		int uriALength = uriAfeed.length();
 		int uriBLength = uriBfeed.length();
@@ -30,7 +30,12 @@ public class InoltroPost {
 				 uri = uri.replaceAll(" ", "%20");
 				 
 				 System.out.println(uri);
-				 Registrazione.inviourl(uri);
+				 
+				 String inputLine = Registrazione.inviourl(uri);
+				 
+				 if(inputLine == null){
+					 return true;
+				 }
 			 }
 			 
 			 else if((uriALength < guid.length()) && (uriAfeed.equals(guid.substring(0, uriALength)))) {
@@ -49,9 +54,15 @@ public class InoltroPost {
 				 uri = uri.replaceAll(" ", "%20");
 
 				 System.out.println(uri);
-				 Registrazione.inviourl(uri);
+				 
+				 String inputLine = Registrazione.inviourl(uri);
+				 
+				 if(inputLine == null){
+					 return true;
+				 }
 			 }
 
 		 }
+		return false;
 	}
 }
