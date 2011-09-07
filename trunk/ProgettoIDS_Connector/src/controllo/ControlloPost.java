@@ -57,18 +57,17 @@ public class ControlloPost {
 	}
 	
 	private static boolean controllofiltro(String filtro,String category){
+		System.out.println("Categorie: "+category);
 		StringTokenizer cat = new StringTokenizer(category, ",");
 		String[] category2 = new String[cat.countTokens()];
 		for(int i=0; i<category2.length; i++){
 			category2[i] = cat.nextToken();
-			System.out.println(category2[i]);
 		}
 		
 		StringTokenizer  fil = new StringTokenizer(filtro, ",");
 		String[] filtro2 = new String[fil.countTokens()];
 		for(int i=0; i<filtro2.length; i++){
 			filtro2[i] = fil.nextToken();
-			System.out.println(filtro2[i]);
 		}
 		
 		int conta_filtri = filtro2.length;
