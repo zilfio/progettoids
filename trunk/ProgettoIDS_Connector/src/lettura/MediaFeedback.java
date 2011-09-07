@@ -17,7 +17,6 @@ public class MediaFeedback {
 		int feedcount = 0;
 		int feedsum = 0;
 		String average = new String();
-		System.out.println("sto qui");
 		for(FeedMessage f : feedback){
 			if (f != null){
 				if (f.getTitle().equals("AGREE")){
