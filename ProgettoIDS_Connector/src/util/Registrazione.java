@@ -8,7 +8,7 @@ import java.net.URL;
 import java.net.URLConnection;
 
 public class Registrazione {
-	public static void inviourl(String uri){
+	public static String inviourl(String uri){
 		URL url = null;
 		try {
 			url = new URL(uri);
@@ -21,11 +21,11 @@ public class Registrazione {
 			BufferedReader in = new BufferedReader(new InputStreamReader(yc.getInputStream())); 
 	        String inputLine;
 	        inputLine = in.readLine();
-	        System.out.println("InputLine: "+inputLine); 
-	        in.close();
+	        return inputLine;
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return null;
 		}		 
 	}
 }

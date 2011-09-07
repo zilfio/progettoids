@@ -8,6 +8,8 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import util.Registrazione;
+
 public class RegistrazionePost {
 
 	@BeforeClass
@@ -28,7 +30,11 @@ public class RegistrazionePost {
 
 	@Test
 	public void testInviourl() {
-		fail("Not yet implemented");
+		System.out.println("Test: Registrazione Post Corretto");
+		String atlantis = "http://atlantis.isti.cnr.it:8080/virtualNoticeBoard/postboard?action=NEWPOST&title=provazilfio&link=http://atlantis.isti.cnr.it:8080/virtualNoticeBoard/postboard&description=prova&category=ciao";
+		String expResult = null;
+		String result = Registrazione.inviourl(atlantis);
+		assertEquals(expResult, result);
 	}
 
 }
