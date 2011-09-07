@@ -62,6 +62,13 @@ public class Connector {
 		//System.out.print("Inserisci l'uri dei Feedback bacheca B: ");
 		//String uriBfeed = Read.readString();
 		
+		if(FILTRO.equals("")){
+			System.out.println("Attenzione: Nessun filtro impostato!");
+		}
+		else{
+			System.out.println("Filtro: "+FILTRO);
+		}
+		
 		System.out.println("Eseguo lettura post!");
 		
 		//Lettura Post di entrambe le bacheche
@@ -71,6 +78,7 @@ public class Connector {
 		System.out.println("Lettura post fine!");
 		
 		if(postA == null && postB == null){
+			System.out.println("Attenzione: le bacheche sono vuote!");
 			System.exit(0);
 		}
 		
@@ -92,7 +100,7 @@ public class Connector {
 				feed = LetturaFeedback.parsingFeed(guid2);
 				System.out.println("Feed: "+feed);
 				if(feed!=null){
-					System.out.println("diverso da null");
+					System.out.println("Esiste almeno un commento!");
 					String guid = InoltroFeedback.findFeedback(m, URI_A_FEED, URI_B_FEED, URI_A_POST_READ, URI_B_POST_READ);
 					System.out.println("Guid: "+guid);
 					InoltroFeedback.feedbackForward(feed, guid);

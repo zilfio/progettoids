@@ -45,8 +45,6 @@ public class PropagazionePost {
 	public void testInviourl() {
 		System.out.println("Propagazione Post");
 		
-		boolean expResult = true;
-		
 		//Carichiamo la Configurazione
 		/* Creiamo l'oggetto istanza della classe properties */
 		Properties p  = new Properties();
@@ -90,6 +88,6 @@ public class PropagazionePost {
 		//Inoltro nuovi Post
 		boolean result = InoltroPost.PostForward(postC, URI_A_FEED, URI_B_FEED, URI_A_POST_NEW, URI_B_POST_NEW);
 		
-		assertEquals(expResult, result);
+		assertTrue(result);
 	}
 }
