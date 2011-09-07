@@ -1,0 +1,40 @@
+package test;
+
+import static org.junit.Assert.*;
+
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+
+import util.Registrazione;
+
+public class RegistrazionePostNonCorretto {
+
+	@BeforeClass
+	public static void setUpBeforeClass() throws Exception {
+	}
+
+	@AfterClass
+	public static void tearDownAfterClass() throws Exception {
+	}
+
+	@Before
+	public void setUp() throws Exception {
+	}
+
+	@After
+	public void tearDown() throws Exception {
+	}
+
+	@Test
+	public void testInviourl() {
+		System.out.println("Test: Registrazione Post Non Corretto");
+		String atlantis = "http://atlantis.isti.cnr.it:8080/virtualNoticeBoard/postboard?action=newpost&title=provazilfio&link=http://atlantis.isti.cnr.it:8080/virtualNoticeBoard/postboard&description=prova&category=ciao";
+		String expResult = "DEFAULT@PostBoard!!";
+		String result = Registrazione.inviourl(atlantis);
+		assertEquals(expResult, result);
+	}
+
+}
