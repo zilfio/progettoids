@@ -20,8 +20,8 @@ public class Registrazione {
 			URLConnection yc = url.openConnection();
 			BufferedReader in = new BufferedReader(new InputStreamReader(yc.getInputStream())); 
 	        String inputLine;
-	        while ((inputLine = in.readLine()) != null)  
-	            System.out.println("InputLine: "+inputLine); 
+	        inputLine = in.readLine();
+	        System.out.println("InputLine: "+inputLine); 
 	        in.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
