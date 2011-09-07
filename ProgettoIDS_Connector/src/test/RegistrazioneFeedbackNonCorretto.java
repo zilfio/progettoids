@@ -10,7 +10,7 @@ import org.junit.Test;
 
 import util.Registrazione;
 
-public class RegistrazioneFeedback {
+public class RegistrazioneFeedbackNonCorretto {
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -37,9 +37,10 @@ public class RegistrazioneFeedback {
 		String title = util.Read.readString();
 		System.out.print("Inserisci Description: ");
 		String description = util.Read.readString();
-		String url = guid+"&action=NEWCOMMENT"+"&title="+title+"&description="+description;
-		String expResult = null;
+		String url = guid+"&action=newcomment"+"&title="+title+"&description="+description;
+		String expResult = "DEFAULT@Feedbaxck!!";
 		String result = Registrazione.inviourl(url);
 		assertEquals(expResult, result);
 	}
+
 }
