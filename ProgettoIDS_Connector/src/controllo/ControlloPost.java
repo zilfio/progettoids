@@ -17,7 +17,7 @@ public class ControlloPost {
 		//Controllo da A a B
 		if(postA!=null){
 			for(FeedMessage f : postA){
-				if (f.getCategory().equals(filtro)){
+				//if (f.getCategory().equals(filtro)){
 					trovato = false;
 					if(postB!=null){
 						for(FeedMessage m : postB){
@@ -26,7 +26,7 @@ public class ControlloPost {
 							}
 						}
 					}
-				}
+				//}
 				if(trovato == false){
 					c.add(f);
 				}
@@ -37,7 +37,7 @@ public class ControlloPost {
 		//Controllo da B ad A
 		if(postB!=null){
 			for(FeedMessage f : postB){
-				if (f.getCategory().equals(filtro)){
+				//if (f.getCategory().equals(filtro)){
 					trovato = false;
 					if(postA!=null){
 						for(FeedMessage m : postA){
@@ -46,7 +46,7 @@ public class ControlloPost {
 							}
 						}
 					}
-				}
+				//}
 				if(trovato == false){
 					c.add(f);
 				}
