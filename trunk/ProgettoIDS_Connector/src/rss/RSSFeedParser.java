@@ -111,12 +111,16 @@ public class RSSFeedParser {
 						copyright = event.asCharacters().getData();
 						continue;
 					}
+					
+
 					if (event.asStartElement().getName().getLocalPart() == (CATEGORY)) {
+
 						event = eventReader.nextEvent();
 						// Gestione personalizzata di più category
 						category = category + event.asCharacters().getData() + ",";
 						continue;
 					}
+					
 				} else if (event.isEndElement()) {
 					if (event.asEndElement().getName().getLocalPart() == (ITEM)) {
 						FeedMessage message = new FeedMessage();
@@ -126,6 +130,8 @@ public class RSSFeedParser {
 						message.setLink(link);
 						message.setTitle(title);
 						message.setCategory(category);
+						//Reset Category per ogni post
+						category = "";
 						message.setPubdate(pubdate);
 						feed.getMessages().add(message);
 						event = eventReader.nextEvent();
