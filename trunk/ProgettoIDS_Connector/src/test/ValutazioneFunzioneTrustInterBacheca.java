@@ -43,7 +43,7 @@ public class ValutazioneFunzioneTrustInterBacheca {
 		String guid = util.Read.readString();
 		guid = guid.replace("?", "?action=READ&");
 		feed = LetturaFeedback.parsingFeed(guid);
-		System.out.println ("Inserire il risultato atteso tra: AGREE, PARTIALLY_AGREE, DISAGREE, DETRACTOR.");
+		System.out.println ("Inserire il risultato atteso tra: AGREE, PARTIALLY_AGREE, DISAGREE, DETRACTOR, null.");
 		String result = util.Read.readString();
 		assertEquals(result, feed.getTitle());
 	}
