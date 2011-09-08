@@ -7,7 +7,17 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 
+/**
+ * 
+ * @author Zilfio
+ *
+ */
 public class Registrazione {
+	/**
+	 * 
+	 * @param uri
+	 * @return il metodo invia una url e ritorna la riga della risposta del server
+	 */
 	public static String inviourl(String uri){
 		URL url = null;
 		try {

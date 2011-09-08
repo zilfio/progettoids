@@ -4,9 +4,17 @@ import java.util.Collection;
 
 import rss.FeedMessage;
 
-
-
+/**
+ * 
+ * @author Zilfio
+ *
+ */
 public class LetturaFeedback {
+	/**
+	 * 
+	 * @param guid
+	 * @return il metodo ritorna il sunto(feedback univoco) se esiste almeno un commento, null altrimenti
+	 */
 	public static FeedMessage parsingFeed(String guid){
 		Collection<FeedMessage> feedToT = LetturaPost.parsingPost(guid);
 		System.out.println("FeedTot: "+feedToT);
