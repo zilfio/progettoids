@@ -63,14 +63,19 @@ public class InoltroFeedback {
 	 * @param feedback
 	 * @param guid
 	 */
-	public static void feedbackForward(FeedMessage feedback,String guid){
+	public static boolean feedbackForward(FeedMessage feedback,String guid){
 		guid = guid.replace("?", "?action=NEWCOMMENT&");
 		System.out.println("guid: "+guid);
 		String uri = (guid + "&author=" + feedback.getAuthor() + "&title=" + feedback.getTitle() + "&description=" + feedback.getDescription());
 		uri = uri.replaceAll(" ", "%20");
 		System.out.println("URI: "+uri);
 		
-		Registrazione.inviourl(uri);
+		String inputLine = Registrazione.inviourl(uri);
+		 
+		 if(inputLine == null){
+			 return true;
+		 }
+		return false;
 	}
 }
 	
