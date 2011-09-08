@@ -7,8 +7,21 @@ import rss.FeedMessage;
 import util.Registrazione;
 import lettura.LetturaPost;
 
-
+/**
+ * 
+ * @author Zilfio
+ *
+ */
 public class InoltroFeedback {
+	/**
+	 * 
+	 * @param post
+	 * @param urifeedA
+	 * @param urifeedB
+	 * @param uriA
+	 * @param uriB
+	 * @return il metodo ritorna il guid del messaggio se è stato trovato il feedback, null altrimenti
+	 */
 	public static String findFeedback (FeedMessage post, String urifeedA, String urifeedB, String uriA, String uriB){
 		
 		String guid = post.getGuid();
@@ -45,6 +58,11 @@ public class InoltroFeedback {
 		return null;
 	}
 	
+	/**
+	 * 
+	 * @param feedback
+	 * @param guid
+	 */
 	public static void feedbackForward(FeedMessage feedback,String guid){
 		guid = guid.replace("?", "?action=NEWCOMMENT&");
 		System.out.println("guid: "+guid);

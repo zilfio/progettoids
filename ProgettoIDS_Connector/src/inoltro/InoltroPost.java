@@ -5,9 +5,21 @@ import java.util.Collection;
 import rss.FeedMessage;
 import util.Registrazione;
 
-
+/**
+ * 
+ * @author Zilfio
+ *
+ */
 public class InoltroPost {
-
+	/**
+	 * 
+	 * @param post
+	 * @param uriAfeed
+	 * @param uriBfeed
+	 * @param uriA
+	 * @param uriB
+	 * @return il metodo ritorna true se il post è stato inoltrato correttamente, false altrimenti
+	 */
 	public static boolean PostForward(Collection<FeedMessage>post, String uriAfeed, String uriBfeed, String uriA, String uriB){
 		
 		int uriALength = uriAfeed.length();

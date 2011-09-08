@@ -4,8 +4,11 @@ import java.util.Collection;
 
 import rss.FeedMessage;
 
-
-
+/**
+ * 
+ * @author Zilfio
+ *
+ */
 public class MediaFeedback {
 	
 	  static final String a="AGGREE";
@@ -13,6 +16,11 @@ public class MediaFeedback {
       static final String c="PARTIALLY_AGREE";
       static final String d="DETRACTOR";
       
+    /**
+     * 
+     * @param feedback
+     * @return il metodo ritorna la media aritmetica personalizzata
+     */
 	public static String calcola_media(Collection<FeedMessage>feedback){
 		int feedcount = 0;
 		int feedsum = 0;

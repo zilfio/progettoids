@@ -7,12 +7,17 @@ import rss.Feed;
 import rss.FeedMessage;
 import rss.RSSFeedParser;
 
+/**
+ * 
+ * @author Zilfio
+ *
+ */
 public class LetturaPost {
 	
 	/**
 	 * 
 	 * @param uri
-	 * @return
+	 * @return il metodo ritorna una collezione di FeedMessage
 	 */
 	 public static Collection<FeedMessage> parsingPost(String uri){
 		 try{

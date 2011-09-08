@@ -6,7 +6,19 @@ import java.util.StringTokenizer;
 
 import rss.FeedMessage;
 
+/**
+ * 
+ * @author Zilfio
+ *
+ */
 public class ControlloPost {
+	/**
+	 * 
+	 * @param postA
+	 * @param postB
+	 * @param filtro
+	 * @return il metodo ritorna una collezione di FeedMessage
+	 */
 	public static Collection<FeedMessage> checkpost (Collection<FeedMessage>postA, Collection<FeedMessage>postB, String filtro){
 		
 		Collection<FeedMessage> c = new ArrayList<FeedMessage>();
@@ -56,6 +68,12 @@ public class ControlloPost {
 		return c;
 	}
 	
+	/**
+	 * 
+	 * @param filtro
+	 * @param category
+	 * @return il metodo ritorna un boolean a seconda che il filtro è uguale o no alle categorie di un post
+	 */
 	private static boolean controllofiltro(String filtro,String category){
 		StringTokenizer cat = new StringTokenizer(category, ",");
 		String[] category2 = new String[cat.countTokens()];
