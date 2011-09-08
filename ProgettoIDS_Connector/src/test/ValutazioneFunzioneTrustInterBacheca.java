@@ -41,6 +41,7 @@ public class ValutazioneFunzioneTrustInterBacheca {
 		FeedMessage feed = new FeedMessage();
 		System.out.println ("Inserire il Guid di un Post: ");
 		String guid = util.Read.readString();
+		guid = guid.replace("?", "?action=READ&");
 		feed = LetturaFeedback.parsingFeed(guid);
 		System.out.println ("Inserire il risultato atteso tra: AGREE, PARTIALLY_AGREE, DISAGREE, DETRACTOR.");
 		String result = util.Read.readString();
