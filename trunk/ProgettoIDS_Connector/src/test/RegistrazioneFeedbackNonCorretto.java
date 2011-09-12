@@ -31,13 +31,15 @@ public class RegistrazioneFeedbackNonCorretto {
 	@Test
 	public void testInviourl() {
 		System.out.println("Test: Registrazione Feedback Corretto");
-		System.out.print("Inserisci Guid: ");
-		String guid = util.Read.readString();
-		System.out.print("Inserisci Title: ");
+		System.out.print("Inserisci il Titolo del commento: ");
 		String title = util.Read.readString();
-		System.out.print("Inserisci Description: ");
+		System.out.print("Inserire la Descrizione del commento: ");
 		String description = util.Read.readString();
-		String url = guid+"&action=newcomment"+"&title="+title+"&description="+description;
+		System.out.println ("Inserire l'Autore del commento: ");
+		String author = util.Read.readString();
+		System.out.print("Inserisci il Guid del post da commentare : ");
+		String guid = util.Read.readString();
+		String url = guid+"&action=newcomment"+"&title="+title+"&description="+description+"&author="+author;
 		String expResult = "DEFAULT@Feedbaxck!!";
 		String result = Registrazione.inviourl(url);
 		assertEquals(expResult, result);
