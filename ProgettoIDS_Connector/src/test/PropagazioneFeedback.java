@@ -2,10 +2,12 @@ package test;
 
 import static org.junit.Assert.*;
 
+import java.util.Collection;
 import java.util.Properties;
 
 import inoltro.InoltroFeedback;
 import lettura.LetturaFeedback;
+import lettura.LetturaPost;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -55,15 +57,34 @@ public class PropagazioneFeedback {
 		
 		System.out.println("Test: Propagazione Feedback");
 		FeedMessage feed = new FeedMessage();
+		FeedMessage post = new FeedMessage();
 		System.out.println ("Inserire il Guid del post originale (assicurandosi che" +
 				" il post sia già stato propagato nell'altra bacheca): ");
 		String guid2 = util.Read.readString();
+		if (guid2.contains(URI_A_FEED)){
+			Collection<FeedMessage> postA = LetturaPost.parsingPost(URI_A_POST_READ);
+			for (FeedMessage m : postA){
+				if (m.getGuid().equals(guid2)){
+					post = m;
+					break;
+				}
+			}
+		}
+		else {
+			Collection<FeedMessage> postB = LetturaPost.parsingPost(URI_A_POST_READ);
+			for (FeedMessage m : postB){
+				if (m.getGuid().equals(guid2)){
+					post = m;
+					break;
+				}
+			}
+		}
 		guid2 = guid2.replace("?", "?action=READ&");
 		System.out.println(guid2);
 		feed = LetturaFeedback.parsingFeed(guid2);
 		System.out.println("Feed: "+feed);
 		if(feed!=null){
-			String guid = InoltroFeedback.findFeedback(feed, URI_A_FEED, URI_B_FEED, URI_A_POST_READ, URI_B_POST_READ);
+			String guid = InoltroFeedback.findFeedback(post, URI_A_FEED, URI_B_FEED, URI_A_POST_READ, URI_B_POST_READ);
 			result = InoltroFeedback.feedbackForward(feed, guid);
 		}
 		assertTrue(result);
