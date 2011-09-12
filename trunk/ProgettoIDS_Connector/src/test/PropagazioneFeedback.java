@@ -59,10 +59,11 @@ public class PropagazioneFeedback {
 				" il post sia già stato propagato nell'altra bacheca): ");
 		String guid2 = util.Read.readString();
 		guid2 = guid2.replace("?", "?action=READ&");
+		System.out.println(guid2);
 		feed = LetturaFeedback.parsingFeed(guid2);
 		System.out.println("Feed: "+feed);
 		if(feed!=null){
-			String guid = InoltroFeedback.findFeedback(guid2, URI_A_FEED, URI_B_FEED, URI_A_POST_READ, URI_B_POST_READ);
+			String guid = InoltroFeedback.findFeedback(feed, URI_A_FEED, URI_B_FEED, URI_A_POST_READ, URI_B_POST_READ);
 			result = InoltroFeedback.feedbackForward(feed, guid);
 		}
 		assertTrue(result);
