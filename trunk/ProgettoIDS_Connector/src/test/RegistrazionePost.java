@@ -31,10 +31,19 @@ public class RegistrazionePost {
 	@Test
 	public void testInviourl() {
 		System.out.println("Test: Registrazione Post Corretto");
-		String atlantis = "http://atlantis.isti.cnr.it:8080/virtualNoticeBoard/postboard?action=NEWPOST&title=provazilfio&link=http://atlantis.isti.cnr.it:8080/virtualNoticeBoard/postboard&description=prova&category=ciao";
+		System.out.print("Inserisci il Titolo del post: ");
+		String title = util.Read.readString();
+		System.out.print("Inserire il Link del post: ");
+		String link = util.Read.readString();
+		System.out.println ("Inserire la Descrizione del post: ");
+		String description = util.Read.readString();
+		System.out.println ("Inserire la Categoria del post: ");
+		String category = util.Read.readString();
+		System.out.print("Inserisci l'Autore del post : ");
+		String author = util.Read.readString();
+		String atlantis = "http://atlantis.isti.cnr.it:8080/virtualNoticeBoard/postboard?action=NEWPOST"+"&"+title+"&"+link+"&"+description+"&"+category+"&"+author;
 		String expResult = null;
 		String result = Registrazione.inviourl(atlantis);
 		assertEquals(expResult, result);
 	}
-
 }
