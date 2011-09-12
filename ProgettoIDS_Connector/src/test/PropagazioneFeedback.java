@@ -51,7 +51,7 @@ public class PropagazioneFeedback {
 		String URI_B_FEED_READ = p.getProperty("uri_feedback_bacheca_b") +  p.getProperty("action_readfeed");
 		String URI_B_FEED_NEW = p.getProperty("uri_feedback_bacheca_b") +  p.getProperty("action_newfeed");
 		
-		Boolean result = false;
+		boolean result = false;
 		
 		System.out.println("Test: Propagazione Feedback");
 		FeedMessage feed = new FeedMessage();
