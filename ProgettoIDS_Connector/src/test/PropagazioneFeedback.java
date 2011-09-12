@@ -71,7 +71,7 @@ public class PropagazioneFeedback {
 			}
 		}
 		else {
-			Collection<FeedMessage> postB = LetturaPost.parsingPost(URI_A_POST_READ);
+			Collection<FeedMessage> postB = LetturaPost.parsingPost(URI_B_POST_READ);
 			for (FeedMessage m : postB){
 				if (m.getGuid().equals(guid2)){
 					post = m;
