@@ -35,9 +35,9 @@ public class RegistrazionePost {
 		String title = util.Read.readString();
 		System.out.print("Inserire il Link del post: ");
 		String link = util.Read.readString();
-		System.out.println ("Inserire la Descrizione del post: ");
+		System.out.print("Inserire la Descrizione del post: ");
 		String description = util.Read.readString();
-		System.out.println ("Inserire la Categoria del post: ");
+		System.out.print("Inserire la Categoria del post: ");
 		String category = util.Read.readString();
 		System.out.print("Inserisci l'Autore del post : ");
 		String author = util.Read.readString();
