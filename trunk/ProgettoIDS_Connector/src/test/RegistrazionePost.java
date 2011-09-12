@@ -41,7 +41,7 @@ public class RegistrazionePost {
 		String category = util.Read.readString();
 		System.out.print("Inserisci l'Autore del post : ");
 		String author = util.Read.readString();
-		String atlantis = "http://atlantis.isti.cnr.it:8080/virtualNoticeBoard/postboard?action=NEWPOST"+"&"+title+"&"+link+"&"+description+"&"+category+"&"+author;
+		String atlantis = "http://atlantis.isti.cnr.it:8080/virtualNoticeBoard/postboard?action=NEWPOST"+"&title="+title+"&link="+link+"&description="+description+"&category="+category+"&author="+author;
 		String expResult = null;
 		String result = Registrazione.inviourl(atlantis);
 		assertEquals(expResult, result);
