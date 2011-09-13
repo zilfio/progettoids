@@ -31,7 +31,10 @@ public class LetturaPost {
 		 }
 		 
 		 catch(NullPointerException e){
-			 System.out.println("Nella bacheca non ci sono Post da inoltrare!");
+			 
+			 // LOG
+			 System.out.println(". Non ci sono elementi nella bacheca: " + uri);
+			 
 			 return null;
 		 }
 		 catch(RuntimeException e){
