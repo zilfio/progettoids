@@ -2,6 +2,10 @@ package test;
 
 import static org.junit.Assert.*;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Collection;
 import java.util.Properties;
 
@@ -38,8 +42,24 @@ public class PropagazioneFeedback {
 	@Test
 	public void testPropagazioneFeedback() {
 		
-		/* Recuperiamo il valore della proprietà */
+		/* Creiamo l'oggetto istanza della classe properties */
 		Properties p  = new Properties();
+		
+		/* Creiamo un oggetto File a cui passiamo come parametro */
+		/* il path del file di properties */
+		File f = new File("./config.properties");
+		
+		/* Carichiamo lo stream nell'oggetto properties */
+		try {
+			p.load(new FileInputStream(f));
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		String URI_A_POST = p.getProperty("uri_post_bacheca_a");
 		String URI_A_POST_READ = p.getProperty("uri_post_bacheca_a") +  p.getProperty("action_readpost");
 		String URI_A_POST_NEW = p.getProperty("uri_post_bacheca_a") +  p.getProperty("action_newpost");
