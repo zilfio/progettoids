@@ -20,7 +20,7 @@ public class InoltroPost {
 	 * @param uriB
 	 * @return il metodo ritorna true se il post è stato inoltrato correttamente, false altrimenti
 	 */
-	public static boolean PostForward(Collection<FeedMessage>post, String uriAfeed, String uriBfeed, String uriA, String uriB){
+	public static boolean postForward(Collection<FeedMessage>post, String uriAfeed, String uriBfeed, String uriA, String uriB){
 		
 		int uriALength = uriAfeed.length();
 		int uriBLength = uriBfeed.length();
@@ -28,7 +28,6 @@ public class InoltroPost {
 			String guid = message.getGuid();
 			 if ((uriBLength < guid.length()) && (uriBfeed.equals(guid.substring(0, uriBLength)))){
 				 //Sostituire il S.o.P con l'invio dell'uri
-				 System.out.println ("Fa parte della bacheca B");
 				 String uri = uriA + "&title=" + message.getTitle() + "&description="
 				 + message.getDescription() + "&link=" + message.getLink() + "&pubDate=" + message.getPubdate();
 				 
@@ -41,7 +40,8 @@ public class InoltroPost {
 				 
 				 uri = uri.replaceAll(" ", "%20");
 				 
-				 System.out.println(uri);
+				 //LOG
+				 System.out.println(". Il seguente messaggio è stato propagato dalla bacheca \"B\" alla bacheca \"A\":" + uri);
 				 
 				 String inputLine = Registrazione.inviourl(uri);
 				 
@@ -52,7 +52,6 @@ public class InoltroPost {
 			 
 			 else if((uriALength < guid.length()) && (uriAfeed.equals(guid.substring(0, uriALength)))) {
 				 //Sostituire il S.o.P con l'invio dell'uri
-				 System.out.println ("Fa parte della bacheca A");
 				 String uri = uriB + "&title=" + message.getTitle() + "&description="
 				 + message.getDescription() + "&link=" + message.getLink() + "&pubDate=" + message.getPubdate();
 				 
@@ -65,7 +64,8 @@ public class InoltroPost {
 				 
 				 uri = uri.replaceAll(" ", "%20");
 
-				 System.out.println(uri);
+				 //LOG
+				 System.out.println(". Il seguente messaggio è stato propagato dalla bacheca \"A\" alla bacheca \"B\":" + uri);
 				 
 				 String inputLine = Registrazione.inviourl(uri);
 				 

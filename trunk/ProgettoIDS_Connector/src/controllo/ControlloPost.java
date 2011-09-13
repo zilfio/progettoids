@@ -25,6 +25,9 @@ public class ControlloPost {
 		boolean trovato = true;
 		
 		//Controllo da A a B
+		
+		//LOG
+		System.out.println (". Controllo Post presenti nella bacheca \"A\" e non nella bacheca \"B\".");
 		if(postA!=null){
 			for(FeedMessage f : postA){
 				if(ControlloPost.controllofiltro(filtro, f.getCategory())){
@@ -47,6 +50,10 @@ public class ControlloPost {
 		
 		
 		//Controllo da B ad A
+		
+		//LOG
+		System.out.println (". Controllo Post presenti nella bacheca \"B\" e non nella bacheca \"A\".");
+
 		if(postB!=null){
 			for(FeedMessage f : postB){
 				if(ControlloPost.controllofiltro(filtro, f.getCategory())){
@@ -65,6 +72,9 @@ public class ControlloPost {
 				else continue;
 			}
 		}
+		
+		//LOG
+		System.out.println ("Sono stati trovati " + c.size() + " Post da propagare.");
 		return c;
 	}
 	

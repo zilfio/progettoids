@@ -17,10 +17,19 @@ public class LetturaFeedback {
 	 */
 	public static FeedMessage parsingFeed(String guid){
 		Collection<FeedMessage> feedToT = LetturaPost.parsingPost(guid);
-		System.out.println("FeedTot: "+feedToT);
+		if (!(feedToT.isEmpty())){
+			
+
+			//LOG
+			System.out.println(". Sono presenti " + feedToT.size() + " feedback per il post: "+ guid);
+		}
+
 		try{
+			
+			//LOG
+			System.out.println (". Generazione del feedback di sunto per il post: "+ guid);
+			
 			String media = MediaFeedback.calcola_media(feedToT);
-			System.out.println("Media: "+media);
 			// creazione feedback univoco
 			FeedMessage feed = new FeedMessage();
 			feed.setDescription("Media Matematica Personalizzata");

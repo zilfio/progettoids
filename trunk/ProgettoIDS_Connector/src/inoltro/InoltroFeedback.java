@@ -24,22 +24,16 @@ public class InoltroFeedback {
 	 */
 	public static String findFeedback (FeedMessage post, String urifeedA, String urifeedB, String uriA, String uriB){
 		
-		String guid = post.getGuid();
-		System.out.println (post.getGuid() );
-		System.out.println (urifeedA );
-		
+		String guid = post.getGuid();		
 		
 		//Controllo presenza post originale in Bacheca A o B
 		int uriAfeedlength = urifeedA.length();
 
 		if(urifeedA.equals(guid.substring(0, uriAfeedlength))){
-			System.out.println (uriB);
 			Collection<FeedMessage> postB = LetturaPost.parsingPost(uriB);
-			System.out.println (postB);
 			
 			for(FeedMessage message:postB){
 				if(post.getTitle().equals(message.getTitle()) && post.getDescription().equals(message.getDescription()) ){
-					System.out.println ("Guid post duplicato: " + message.getGuid());
 					return message.getGuid();
 				}
 			}
@@ -50,7 +44,6 @@ public class InoltroFeedback {
 			
 			for(FeedMessage message:postA){
 				if(post.getTitle().equals(message.getTitle()) && post.getDescription().equals(message.getDescription()) ){
-					System.out.println ("Guid post duplicato: " + message.getGuid());
 					return message.getGuid();
 				}
 			}
@@ -65,10 +58,8 @@ public class InoltroFeedback {
 	 */
 	public static boolean feedbackForward(FeedMessage feedback,String guid){
 		guid = guid.replace("?", "?action=NEWCOMMENT&");
-		System.out.println("guid: "+guid);
 		String uri = (guid + "&author=" + feedback.getAuthor() + "&title=" + feedback.getTitle() + "&description=" + feedback.getDescription());
 		uri = uri.replaceAll(" ", "%20");
-		System.out.println("URI: "+uri);
 		
 		String inputLine = Registrazione.inviourl(uri);
 		 
