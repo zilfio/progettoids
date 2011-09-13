@@ -10,11 +10,12 @@ import rss.FeedMessage;
  *
  */
 public class LetturaFeedback {
-	
-	static final String a="AGGREE";
+	/*
+	static final String a="AGREE";
     static final String b="DISAGREE";
     static final String c="PARTIALLY_AGREE";
     static final String d="DETRACTOR";
+    */
     
 	/**
 	 * 
