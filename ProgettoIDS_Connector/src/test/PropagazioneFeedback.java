@@ -83,20 +83,16 @@ public class PropagazioneFeedback {
 		String guid2 = util.Read.readString();
 		System.out.println("ciao");
 		if (guid2.contains(URI_A_FEED)){
-			System.out.println("Ci siamo");
 			Collection<FeedMessage> postA = LetturaPost.parsingPost(URI_A_POST_READ);
 			for (FeedMessage m : postA){
-				System.out.println("Ci siamo3");
 				if (m.getGuid().equals(guid2)){
 					post = m;
 				}
 			}
 		}
 		else {
-			System.out.println("Ci siamo2");
 			Collection<FeedMessage> postB = LetturaPost.parsingPost(URI_B_POST_READ);
 			for (FeedMessage m : postB){
-				System.out.println("Ci siamo4");
 				if (m.getGuid().equals(guid2)){
 					post = m;
 				}
