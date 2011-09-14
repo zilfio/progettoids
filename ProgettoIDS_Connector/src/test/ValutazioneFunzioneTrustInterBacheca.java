@@ -2,9 +2,6 @@ package test;
 
 import static org.junit.Assert.*;
 
-import java.util.ArrayList;
-import java.util.Collection;
-
 import lettura.LetturaFeedback;
 
 import org.junit.After;
@@ -14,8 +11,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import rss.FeedMessage;
-
-import util.Registrazione;
 
 public class ValutazioneFunzioneTrustInterBacheca {
 

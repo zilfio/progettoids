@@ -24,7 +24,7 @@ public class LetturaFeedback {
 	 */
 	public static FeedMessage parsingFeed(String guid){
 		Collection<FeedMessage> feedToT = LetturaPost.parsingPost(guid);
-		if (!(feedToT.isEmpty())){
+		if ((feedToT != null)){
 			
 
 			//LOG

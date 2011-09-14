@@ -92,7 +92,7 @@ public class Connector {
 		if(postA == null && postB == null){
 			
 			// LOG
-			System.out.println(". Entrambe le bacheche non contengono Post.\n***Fine LOG***");
+			System.out.println(". Entrambe le bacheche non contengono Post.\n\n***Fine LOG***");
 			
 			System.exit(0);
 		}
@@ -141,6 +141,6 @@ public class Connector {
 		
 		//LOG
 		System.out.println(". Fine propagazione dei feedbacks.");
-		System.out.println("***Fine LOG***");
+		System.out.println("\n***Fine LOG***");
 	}
 }
