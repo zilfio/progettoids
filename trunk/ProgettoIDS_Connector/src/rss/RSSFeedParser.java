@@ -18,7 +18,7 @@ public class RSSFeedParser {
 	static final String COPYRIGHT = "copyright";
 	static final String LINK = "link";
 	static final String CATEGORY = "category";
-	static final String AUTHOR = "author";
+	static final String AUTHOR = "creator";
 	static final String ITEM = "item";
 	static final String PUB_DATE = "pubDate";
 	static final String GUID = "guid";
