@@ -86,8 +86,9 @@ public class PropagazionePost {
 		Collection<FeedMessage> postC = ControlloPost.checkpost(postA, postB, FILTRO);
 		
 		//Inoltro nuovi Post
-		boolean result = InoltroPost.postForward(postC, URI_A_FEED, URI_B_FEED, URI_A_POST_NEW, URI_B_POST_NEW);
-		
-		assertTrue(result);
+		for (FeedMessage message : postC) {
+			boolean result = InoltroPost.postForward(message, URI_A_FEED, URI_B_FEED, URI_A_POST_NEW, URI_B_POST_NEW);
+			assertTrue(result);
+		}
 	}
 }

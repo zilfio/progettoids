@@ -20,11 +20,11 @@ public class InoltroPost {
 	 * @param uriB
 	 * @return il metodo ritorna true se il post è stato inoltrato correttamente, false altrimenti
 	 */
-	public static boolean postForward(Collection<FeedMessage>post, String uriAfeed, String uriBfeed, String uriA, String uriB){
+	public static boolean postForward(FeedMessage message, String uriAfeed, String uriBfeed, String uriA, String uriB){
 		
 		int uriALength = uriAfeed.length();
 		int uriBLength = uriBfeed.length();
-		for (FeedMessage message : post) {
+
 			String guid = message.getGuid();
 			 if ((uriBLength < guid.length()) && (uriBfeed.equals(guid.substring(0, uriBLength)))){
 				 //Sostituire il S.o.P con l'invio dell'uri
@@ -34,8 +34,8 @@ public class InoltroPost {
 				 //Controllo Bug Category
 				 if ( !(message.getCategory().isEmpty()) )
 					 uri = uri + "&category=" + message.getCategory();
-				 if ( !(message.getAuthor().isEmpty()) )
-					 uri = uri + "&author=" + message.getAuthor();
+				 
+				 uri = uri + "&author=Connector";
 				 
 				 
 				 uri = uri.replaceAll(" ", "%20");
@@ -46,7 +46,19 @@ public class InoltroPost {
 				 String inputLine = Registrazione.inviourl(uri);
 				 
 				 if(inputLine == null){
+					 
+					 //LOG
+					 System.out.println(". Il seguente messaggio è stato propagato dalla bacheca \"B\" alla bacheca \"A\":" + uri);
+
 					 return true;
+				 }
+				 else {
+					 
+					 //LOG
+					 System.out.println(". Il seguente messaggio non è stato propagato dalla bacheca \"B\" alla bacheca \"A\":" + uri);
+
+					 return false;
+					 
 				 }
 			 }
 			 
@@ -63,18 +75,25 @@ public class InoltroPost {
 				 
 				 
 				 uri = uri.replaceAll(" ", "%20");
-
-				 //LOG
-				 System.out.println(". Il seguente messaggio è stato propagato dalla bacheca \"A\" alla bacheca \"B\":" + uri);
-				 
 				 String inputLine = Registrazione.inviourl(uri);
 				 
 				 if(inputLine == null){
+
+					 //LOG
+					 System.out.println(". Il seguente messaggio è stato propagato dalla bacheca \"A\" alla bacheca \"B\":" + uri);
+					 
 					 return true;
 				 }
-			 }
+				 
+				 else{
 
-		 }
-		return false;
+					 //LOG
+					 System.out.println(". Il seguente messaggio non è stato propagato dalla bacheca \"A\" alla bacheca \"B\":" + uri);
+					 
+					 return false;
+					 
+				 }
+			 }
+			return false;
 	}
 }
