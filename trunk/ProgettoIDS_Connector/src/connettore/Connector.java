@@ -115,7 +115,9 @@ public class Connector {
 		//LOG
 		System.out.println (". Inizio propagazione dei post.");
 		
-		InoltroPost.postForward(postC, URI_A_FEED, URI_B_FEED, URI_A_POST_NEW, URI_B_POST_NEW);
+		for (FeedMessage message : postC) {
+			InoltroPost.postForward(message, URI_A_FEED, URI_B_FEED, URI_A_POST_NEW, URI_B_POST_NEW);
+		}
 		
 		//LOG
 		System.out.println (". Fine propagazione dei post.");
