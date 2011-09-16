@@ -1,6 +1,11 @@
 package lettura;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Collection;
+import java.util.Properties;
 
 import rss.FeedMessage;
 
@@ -40,7 +45,26 @@ public class LetturaFeedback {
 			// creazione feedback univoco
 			FeedMessage feed = new FeedMessage();
 			feed.setDescription("Media Matematica Personalizzata");
-			feed.setAuthor("Connector");
+			
+			/* Creiamo l'oggetto istanza della classe properties */
+			Properties p  = new Properties();
+			
+			/* Creiamo un oggetto File a cui passiamo come parametro */
+			/* il path del file di properties */
+			File f = new File("./config.properties");
+			
+			/* Carichiamo lo stream nell'oggetto properties */
+			try {
+				p.load(new FileInputStream(f));
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			feed.setAuthor(p.getProperty("autore_commento"));
 			feed.setTitle(media);
 			
 			return feed;
