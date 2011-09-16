@@ -31,6 +31,8 @@ public class RegistrazionePost {
 	@Test
 	public void testInviourl() {
 		System.out.println("Test: Registrazione Post Corretto");
+		System.out.println("Dove vuoi fare il post?\n1: atlantis - 2: pc-ericlab");
+		String bacheca = util.Read.readString();
 		System.out.print("Inserisci il Titolo del post: ");
 		String title = util.Read.readString();
 		System.out.print("Inserire il Link del post: ");
@@ -41,9 +43,15 @@ public class RegistrazionePost {
 		String category = util.Read.readString();
 		System.out.print("Inserisci l'Autore del post : ");
 		String author = util.Read.readString();
-		String atlantis = "http://atlantis.isti.cnr.it:8080/virtualNoticeBoard/postboard?action=NEWPOST"+"&title="+title+"&link="+link+"&description="+description+"&category="+category+"&author="+author;
+		String uri = new String();
+		if(bacheca.equals("1")){
+			uri = "http://atlantis.isti.cnr.it:8080/virtualNoticeBoard/postboard?action=NEWPOST"+"&title="+title+"&link="+link+"&description="+description+"&category="+category+"&author="+author;
+		}
+		else if(bacheca.equals("2")){
+			uri = "http://pc-ericlab11.isti.cnr.it:8080/virtualNoticeBoard/postboard?action=NEWPOST"+"&title="+title+"&link="+link+"&description="+description+"&category="+category+"&author="+author;
+		}
 		String expResult = null;
-		String result = Registrazione.inviourl(atlantis);
+		String result = Registrazione.inviourl(uri);
 		assertEquals(expResult, result);
 	}
 }
