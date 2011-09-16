@@ -1,6 +1,10 @@
 package inoltro;
 
-import java.util.Collection;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Properties;
 
 import rss.FeedMessage;
 import util.Registrazione;
@@ -22,6 +26,25 @@ public class InoltroPost {
 	 */
 	public static boolean postForward(FeedMessage message, String uriAfeed, String uriBfeed, String uriA, String uriB){
 		
+		//Carichiamo la Configurazione
+		/* Creiamo l'oggetto istanza della classe properties */
+		Properties p  = new Properties();
+		
+		/* Creiamo un oggetto File a cui passiamo come parametro */
+		/* il path del file di properties */
+		File f = new File("./config.properties");
+		
+		/* Carichiamo lo stream nell'oggetto properties */
+		try {
+			p.load(new FileInputStream(f));
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		int uriALength = uriAfeed.length();
 		int uriBLength = uriBfeed.length();
 
@@ -35,14 +58,7 @@ public class InoltroPost {
 				 if ( !(message.getCategory().isEmpty()) )
 					 uri = uri + "&category=" + message.getCategory();
 				 
-				 uri = uri + "&author=Connector";
-				 
-				 
-				 uri = uri.replaceAll(" ", "%20");
-				 
-				 //LOG
-				 System.out.println(". Il seguente messaggio è stato propagato dalla bacheca \"B\" alla bacheca \"A\":" + uri);
-				 
+				
 				 String inputLine = Registrazione.inviourl(uri);
 				 
 				 if(inputLine == null){
@@ -70,8 +86,8 @@ public class InoltroPost {
 				 //Controllo Bug Category
 				 if ( !(message.getCategory().isEmpty()) )
 					 uri = uri + "&category=" + message.getCategory();
-				 if ( !(message.getAuthor().isEmpty()) )
-					 uri = uri + "&author=" + message.getAuthor();
+				 
+				 uri = uri + "&author="+p.getProperty("autore_post");
 				 
 				 
 				 uri = uri.replaceAll(" ", "%20");
