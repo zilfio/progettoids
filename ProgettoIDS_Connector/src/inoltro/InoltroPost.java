@@ -58,7 +58,10 @@ public class InoltroPost {
 				 if ( !(message.getCategory().isEmpty()) )
 					 uri = uri + "&category=" + message.getCategory();
 				 
-				
+				 uri = uri + "&author="+p.getProperty("autore_post");
+				 
+				 
+				 uri = uri.replaceAll(" ", "%20");
 				 String inputLine = Registrazione.inviourl(uri);
 				 
 				 if(inputLine == null){
