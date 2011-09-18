@@ -104,7 +104,6 @@ public class Connector {
 		System.out.println (". Inizio controllo dei post da propagare.");
 		
 		Collection<FeedMessage> postC = ControlloPost.checkpost(postA, postB, FILTRO);
-		
 		//LOG
 		System.out.println (". Fine controllo dei post da propagare.");
 		
